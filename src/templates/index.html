@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% import 'modal/modalCarnetAbogada.html' as macroModaCarAb %}
+{% block title %}
+{{ super() }}
+Index
+{% endblock%}
+{% block content %}
+<div class="container">
+    {% if vmcarnet is true: %}
+    {{ macroModaCarAb.macroModalCarnetAbogada("Abogada Luz Estrella") }}
+    {% endif %}
+    <div class="row">
+        <div class="col">
+                <div class="row p-2">
+                    <a href="/crs"><button class="btn btn-primary btn-lg">Informacion Abogada</button></a>
+                </div>
+                <div class="row p-2">
+                    <a href="/crsc"><button class="btn btn-primary btn-lg">Carnet Abogada</button></a>
+                </div>
+                <div class="row p-2">
+                    <a href="https://app.funcionjudicial.gob.ec/ForoAbogados/Publico/frmConsultasGenerales.jsp" target="_blank" rel="noopener noreferrer"><button class="btn btn-primary btn-lg">Foro de abogados</button></a>
+                </div>
+        </div>
+        <div class="col well">
+            <input style="width: 300px; height: 150px; font-size: 5vw;" type="text">
+        </div>
+        <div class="col">
+                <a  href="https://www.google.com/maps/place/0%C2%B012'09.6%22S+78%C2%B029'37.8%22W/@-0.2028645,-78.493997,19z/data=!4m4!3m3!8m2!3d-0.2026674!4d-78.493828?entry=ttu" target="_blank" rel="noopener noreferrer">
+                    <img class="w-100" src="https://res.cloudinary.com/dvqgk49zn/image/upload/v1717429675/asistenteAbogado/ubication_a4vlfm.jpg" alt="">
+                </a>
+        </div>
+    </div>
+</div>
+{% block custom_scripts %}
+{% if (vmcarnet is true)%}
+<script>
+    window.onload = function () {
+        $("#mcarnetabogada").modal("show");
+    } 
+</script>
+{% endif %}
+{% endblock %}
+{% endblock %}
