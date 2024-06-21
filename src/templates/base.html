@@ -1,45 +1,78 @@
 {% extends 'bootstrap/base.html' %}
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <title>
-        {% block title %}
-            Consultas |
-        {% endblock %}
-    </title>
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<title>
+    {% block title %}
+    Asistente abogados |
+    {% endblock %}
+</title>
 {% endblock %}
 {% block body %}
 
-    {% block header %}
-        {% include 'header.html' %}
-    {% endblock %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock %}
 
-    {% block navbar %}
-        {% include 'navbar.html' %}
-    {% endblock %}
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
-    {% block footer %}
-        {% include 'footer.html' %}
-    {% endblock %}
+{% block footer %}
+{% include 'footer.html' %}
+{% endblock %}
 
-    {% block scripts %}
-        {{ super() }}
-        <script src="{{url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-        <script src="{{url_for('static', filename='node_modules/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
-        <script src="{{url_for('static', filename='js/main.js')}}"></script>
-        <script src="{{url_for('static', filename='css/main.js')}}"></script>
-        {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <script>showMessageAlert("{{category}}","{{message}}")</script>
-            {% endfor %}
-        {% endif%}
-        {% endwith %}
-    {% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='node_modules/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+<script src="{{url_for('static', filename='javascript/main.js')}}" type="module"></script>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<script>
+    const getTitleMessageFromCategory = category => {
+        const titles = {
+            'success': 'Bien Hecho',
+            'warning': 'Atencion',
+            'info': 'Atencion',
+            'error': 'Oops...!',
+
+        }
+        return titles[category]
+    }
+
+    function showMessageAlert(category, message) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: category,
+            title: getTitleMessageFromCategory(category),
+            text: message
+        })
+    }
+    showMessageAlert("{{category}}", "{{message}}");
+</script>
+{% endfor %}
+{% endif%}
+{% endwith %}
+{% endblock %}
+{% block custom_scripts %}
+{% endblock %}
 
 {% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ super() }}
+Login In Admin
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-5">
+            <h2 class="well text-center">User Login</h2>
+            <form action="/arulgin" method="post" contextmenu="">
+                <div class="form-group">
+                    <label for="txtUsername">username</label>
+                    <input type="text" class="form-control" id="txtUsername" name="txtUsername"
+                        aria-describedby="emailHelp" placeholder="Enter Admin Name">
+                </div>
+                <div class="form-group">
+                    <label for="txtUserpassword">Password</label>
+                    <input type="password" class="form-control" id="txtUserpassword" name="txtUserpassword"
+                        placeholder="Enter Password">
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div class="pull-right">
+                <span><a href="auth">Registrar...</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

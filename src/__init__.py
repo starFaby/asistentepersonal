@@ -2,13 +2,16 @@ from src.heart.heartSistem import *
 from src.config.config import *
 from src.heart.heartRouter import *
 from src.heart.heartController import *
+from src.heart.heartMiddlewares import *
 
 loginManager = LoginManager()
-loginManager.loginView = 'auth.controller.controllerLoginIn'
+loginManager.loginView = 'auth.controller.authControllerUserLoginIn'
+
+
 
 @loginManager.user_loader
-def loadUser(username):
-    return UserModel.get(username)
+def loadUser(pfsusersusername):
+    return AuthMiddlewaresUserLoginIn.get(pfsusersusername)
 
 def apprun():
     #----------Sistem---------
@@ -21,6 +24,8 @@ def apprun():
     #----------Admin----------
     #----------Auth----------
     app.register_blueprint(ardbm)
+    app.register_blueprint(arulgn)
+    app.register_blueprint(araulgt)
     #----------Client----------
     app.register_blueprint(crs)
 

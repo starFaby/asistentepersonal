@@ -19,8 +19,8 @@
         <ul>
             {% if current_user.is_authenticated %}
             {% if current_user.id == 'starfaby' %}
-            {% if current_user.isadmin == True %}
-            {% if current_user.email == 'star._faby@hotmail.com' %}
+            {% if current_user.userisadmin == True %}
+            {% if current_user.emailuser == 'star._faby@hotmail.com' %}
             <li class="submenu">
                 <button class="btnsm">Admin</button>
                 <ul class="abgm">
@@ -39,19 +39,26 @@
             {% endif %}
             {% endif %}
             <li><a href="/"><span class="icon">Inicio</span></a></li>
-            <li><a href="/rccat"><span class="icon">Categoria</span></a></li>
-            <li><a href="/crcg"><span class="icon">Consultas en General </span></a></li>
+            <li><a href="/rccat"><span class="icon">Asuntos Legales</span></a></li>
             <li><a href="/rcqs"><span class="icon">Quienes Somos</span></a></li>
+            <li><a href="/aralgn"><span class="icon">Admin</span></a></li>
             <li class="logger">
                 <ul>
                     {% if current_user.is_authenticated %}
-                    <li><span class="bienvenido">Bienvenido:</span></li>
-                    <li><img class="imguser" src="{{current_user.avatar}}" alt="" style="width: 20px; height: 20px;">
-                    </li>
-                    <li><button class="btnlogout"><a href="/rlgt">Logout</a></button></li>
+                        {% if current_user.id == 'starfaby' %}
+                        {% if current_user.userisadmin == True %}
+                        {% if current_user.emailuser == 'star._faby@hotmail.com' %}
+                        <li><span class="bienvenido">Bienvenido:</span></li>
+                        <li><img class="imguser" src="{{current_user.avataruser}}" alt="" style="width: 20px; height: 20px;">
+                        </li>
+                        <li><button class="btnlogout"><a href="/araulgt">Logout</a></button></li>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
                     {% else %}
                     <li class="w-100 p-3"><button class="btnloginin w-100"><a class="nav-link"
-                                href="/rlgn">Login-In</a></button></li>
+                                href="/arulgn">Login-In</a></button></li>
                     {% endif %}
                 </ul>
             </li>

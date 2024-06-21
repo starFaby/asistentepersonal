@@ -6,4 +6,5 @@
 #-------------
 # Services
 #-------------
-from src.auth.services.serviceLoginIn import ServicesLoginIn
+from src.auth.services.authServiceAdminLoginIn import AuthServiceAdminLoginIn 
+from src.auth.services.authServiceUserLoginIn import AuthServiceUserLoginIn 

@@ -1,11 +1,11 @@
 from src.heart.heartSistem import *
-from src.heart.heartController import *
+from src.heart.heartDatabase import *
 
-class ServicesLoginIn():
+class AuthServiceUserLoginIn():
 
-    def onGetUserByUsername(pfsadminusername):
+    def onGetAuthServiceUserLoginInByUsername(pfsusersusername):
         try:
-            return Admin.query.filter_by(pfsadminusername = pfsadminusername)
+            return User.query.filter_by(pfsusersusername = pfsusersusername).first()
         
         except SQLAlchemyError as e:
                 error = str(e.__dict__['orig'])

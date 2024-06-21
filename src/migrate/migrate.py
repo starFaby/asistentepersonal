@@ -9,21 +9,21 @@ def createDB():
 def initDB():
     createDB()
     
-    admin = Admin( pfsadmincedula = "1725302705", 
-                pfsadminnombres = "edgar fabian",
-                pfsadminapellidos = "estrella guambuguete",
-                pfsadminusername = "starfaby",
-                pfsadminemail = "star._faby@hotmail.com",
-                pfsadminpassword = "star123",
-                pfsadmindireccion = "Ferroviaria Media Adrian Navarro S11-82 y puna",  
-                pfsadmincellphone = "0983856136", 
-                pfsadminphone = "022647002",
-                pfsadminisadmin = True,
-                pfsadminavatar = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg", 
-                pfsadminestado = 1,
-                pfsadmincreatedat = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg"
+    user = User( pfsuserscedula = "1725302705", 
+                pfsusersnombres = "edgar fabian",
+                pfsusersapellidos = "estrella guambuguete",
+                pfsusersusername = "starfaby",
+                pfsusersemail = "star._faby@hotmail.com",
+                pfsuserspassword = "star123",
+                pfsusersdireccion = "Ferroviaria Media Adrian Navarro S11-82 y puna",  
+                pfsuserscellphone = "0983856136", 
+                pfsusersphone = "022647002",
+                pfsusersisadmin = True,
+                pfsusersavatar = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg", 
+                pfsusersestado = 1,
+                pfsuserscreatedat = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg"
                 )
-    admin.onGetSetPassword(admin.pfsadminpassword)
-    db.session.add(admin)
+    user.onGetSetPassword(user.pfsuserspassword)
+    db.session.add(user)
     db.session.commit()  
     return 'base de datos creado existosamente' 

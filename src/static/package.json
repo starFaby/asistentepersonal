@@ -12,6 +12,7 @@
   "dependencies": {
     "animations": "^0.0.0",
     "bootstrap": "^5.3.3",
-    "fontawesome": "^5.6.3"
+    "fontawesome": "^5.6.3",
+    "sweetalert2": "^11.11.1"
   }
 }

@@ -1,10 +1,3 @@
-#----------
-#--DATABASE--
-#----------
-#Controller
-#clientControllerStart
-from src.database.database import *
-
 
 #----------
 #--General--
@@ -12,7 +5,7 @@ from src.database.database import *
 #Controller
 #clientControllerStart
 
-from flask import render_template as render
+
 #----------
 #--CLIENT--
 #----------
@@ -25,13 +18,11 @@ from flask import render_template as render
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------
 #-------------
-# controller
+# controller login
 #-------------
-from src.auth.controller.authControllerLoginIn import AuthControllerLoginIn
-#-------------
-# middlewares
-#-------------
-from src.auth.middlewares.middlewaresLoginIn import UserModel
+from src.auth.controller.authControllerUserLoginIn import AuthControllerUserLoginIn
+from src.auth.controller.authControllerAdminUserLogout import AuthControllerAdminUserLogout
+
 
 
 

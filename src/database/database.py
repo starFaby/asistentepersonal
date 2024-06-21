@@ -1,57 +1,5 @@
 from src.heart.heartSistem import *
 
-#----------------------------
-#----------ADMIN----------
-#--------------------------
-
-class Admin(db.Model):
-    __tablename__='pfsadmins'
-
-    pfsadminid = db.Column(db.Integer, primary_key=True)
-    pfsadmincedula = db.Column(db.String(80), nullable=False)
-    pfsadminnombres = db.Column(db.String(80), nullable=False)
-    pfsadminapellidos = db.Column(db.String(80), nullable=False)
-    pfsadminusername = db.Column(db.String(30), nullable=False)
-    pfsadminemail = db.Column(db.String(120), nullable=False)
-    pfsadminpassword = db.Column(db.String(250), nullable=True)
-    pfsadmindireccion = db.Column(db.String(100), nullable=True)
-    pfsadmincellphone = db.Column(db.String(25), nullable=False)
-    pfsadminphone = db.Column(db.String(20), nullable=False)
-    pfsadminisadmin = db.Column(db.Boolean, default=False)
-    pfsadminavatar = db.Column(db.String(250), nullable=True)
-    pfsadminestado = db.Column(db.String(1), nullable=True)
-    pfsadmincreatedat = db.Column(db.Date, nullable=True) 
-
-    def onGetSetPassword(self, pfsadminpassword):
-        self.pfsadminpassword = generate_password_hash(pfsadminpassword)
-
-    def onGetCheckPassword(self, pfsadminpassword):
-        return check_password_hash(self.pfsadminpassword, pfsadminpassword)
-
-    def __init__(self, pfsadmincedula, pfsadminnombres, pfsadminapellidos, pfsadminusername, pfsadminemail, pfsadminpassword, pfsadmindireccion,  pfsadmincellphone, pfsadminphone, pfsadminisadmin, pfsadminavatar, pfsadminestado, pfsadmincreatedat):
-        
-        self.pfsadmincedula = pfsadmincedula
-        self.pfsadminnombres = pfsadminnombres
-        self.pfsadminapellidos = pfsadminapellidos
-        self.pfsadminusername = pfsadminusername
-        self.pfsadminemail = pfsadminemail
-        self.pfsadminpassword = pfsadminpassword 
-        self.pfsadmindireccion = pfsadmindireccion 
-        self.pfsadmincellphone = pfsadmincellphone
-        self.pfsadminphone = pfsadminphone
-        self.pfsadminisadmin = pfsadminisadmin
-        self.pfsadminavatar = pfsadminavatar
-        self.pfsadminestado = pfsadminestado
-        self.pfsadmincreatedat = pfsadmincreatedat
-
-class AdminSchema(ma.Schema):
-    class Meta:
-        fields = ('pfsadminid', 'pfsadmincedula', 'pfsadminnombres', 'pfsadminapellidos', 'pfsadminusername', 'pfsadminemail', 'pfsadminpassword', 'pfsadmindireccion',  'pfsadmincellphone', 'pfsadminphone', 'pfsadminisadmin', 'pfsadminavatar', 'pfsadminestado', 'pfsadmincreatedat')
-
-adminSchema = AdminSchema()
-adminSchema = AdminSchema(many=True)
-
-
 
 #----------------------------
 #----------usuario----------
@@ -74,18 +22,13 @@ class User(db.Model):
     pfsusersestado = db.Column(db.String(1), nullable=True)
     pfsuserscreatedat = db.Column(db.Date, nullable=True) 
 
-
-    pfsadminid = db.Column(db.Integer, db.ForeignKey('pfsadmins.pfsadminid',ondelete='CASCADE'), nullable=False)
-    pfsadmin = db.relationship('Admin',backref=db.backref('pfsusers',lazy=True))
-
-
     def onGetSetPassword(self, pfsuserspassword):
         self.pfsuserspassword = generate_password_hash(pfsuserspassword)
 
     def onGetCheckPassword(self, pfsuserspassword):
         return check_password_hash(self.pfsuserspassword, pfsuserspassword)
 
-    def __init__(self, pfsuserscedula, pfsusersnombres, pfsusersapellidos, pfsusersusername, pfsusersemail, pfsuserspassword, pfsusersdireccion,  pfsuserscellphone, pfsusersphone, pfsusersisadmin, pfsusersavatar, pfsusersestado, pfsuserscreatedat, pfsadminid):
+    def __init__(self, pfsuserscedula, pfsusersnombres, pfsusersapellidos, pfsusersusername, pfsusersemail, pfsuserspassword, pfsusersdireccion,  pfsuserscellphone, pfsusersphone, pfsusersisadmin, pfsusersavatar, pfsusersestado, pfsuserscreatedat):
         self.pfsuserscedula = pfsuserscedula
         self.pfsusersnombres = pfsusersnombres
         self.pfsusersapellidos = pfsusersapellidos
@@ -95,51 +38,83 @@ class User(db.Model):
         self.pfsusersdireccion = pfsusersdireccion 
         self.pfsuserscellphone = pfsuserscellphone
         self.pfsusersphone = pfsusersphone
-        self.pfsusersisadmin = pfsusersisadmin
         self.pfsusersavatar = pfsusersavatar
+        self.pfsusersisadmin = pfsusersisadmin
         self.pfsusersestado = pfsusersestado
         self.pfsuserscreatedat = pfsuserscreatedat 
-        self.pfsadminid = pfsadminid 
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ('pfsusersid', 'pfsuserscedula', 'pfsusersnombres', 'pfsusersapellidos', 'pfsusersusername', 'pfsusersemail', 'pfsuserspassword', 'pfsusersdireccion',  'pfsuserscellphone', 'pfsusersphone', 'pfsusersisadmin', 'pfsusersavatar', 'pfsusersestado', 'pfsuserscreatedat', 'pfsadminid')
+        fields = ('pfsusersid', 'pfsuserscedula', 'pfsusersnombres', 'pfsusersapellidos', 'pfsusersusername', 'pfsusersemail', 'pfsuserspassword', 'pfsusersdireccion',  'pfsuserscellphone', 'pfsusersphone','pfsusersisadmin', 'pfsusersavatar', 'pfsusersestado', 'pfsuserscreatedat')
 
 userSchema = UserSchema()
 usersSchema = UserSchema(many=True)
 
 
-#----------------------------
-#----------Abogada-----------
-#----------------------------
-
-class Abogado(db.Model):
-    __tablename__='pfsabogados'
-
-    pfsabgsid = db.Column(db.Integer, primary_key=True)
-    pfsabgsnombre = db.Column(db.String(100), nullable=False)
-    pfsabgsdetalle = db.Column(db.String(200), nullable=False)
-    pfsabgsavatar = db.Column(db.String(300), nullable=True)
-    pfsabgsestado = db.Column(db.String(1), nullable=True)
-    pfsabgscreatedat = db.Column(db.Date, nullable=True) 
-
-    pfsadminid = db.Column(db.Integer, db.ForeignKey('pfsadmins.pfsadminid',ondelete='CASCADE'), nullable=False)
-    pfsadmin = db.relationship('Admin',backref=db.backref('pfsabogados',lazy=True))
 
 
-    def __init__(self, pfsabgsnombre, pfsabgsdetalle, pfsabgsavatar, pfsabgsestado, pfsabgscreatedat, pfsadminid):
-        self.pfsabgsnombre = pfsabgsnombre
-        self.pfsabgsdetalle = pfsabgsdetalle
-        self.pfsabgsavatar = pfsabgsavatar
-        self.pfsabgsestado = pfsabgsestado
-        self.pfsabgscreatedat = pfsabgscreatedat 
-        self.pfsadminid = pfsadminid 
+#-----------------------------------------------------------
+#---------------ASUNTOS LEGALES----------------------------------
+#----------------------------------------------------------
+
+class Asuntoslegal(db.Model):
+    __tablename__='pfsapasuntoslegales'
+
+    pfsapalid = db.Column(db.Integer, primary_key=True)
+    pfsapalnombre = db.Column(db.String(120), nullable=False)
+    pfsapalimage = db.Column(db.String(300), nullable=False)
+    pfsapaldetalle = db.Column(db.String(300), nullable=False)
+    pfsapalestado = db.Column(db.String(1), nullable=True)
+    pfsapalcreatedat = db.Column(db.String(11), nullable=True) 
 
 
-class AbogadoSchema(ma.Schema):
+    def __init__(self, pfsapalnombre, pfsapalimage, pfsapaldetalle , pfsapalestado, pfsapalcreatedat):
+        self.pfsapalnombre = pfsapalnombre
+        self.pfsapalimage = pfsapalimage
+        self.pfsapaldetalle = pfsapaldetalle
+        self.pfsapalestado = pfsapalestado
+        self.pfsapalcreatedat = pfsapalcreatedat
+
+class AsuntoslegalSchema(ma.Schema):
     class Meta:
-        fields = ('pfsabgsid', 'pfsabgsnombre', 'pfsabgsdetalle', 'pfsabgsavatar', 'pfsabgsestado', 'pfsabgscreatedat', 'pfsadminid')
+        fields = ('pfsapalid', 'pfsapalnombre', 'pfsapalimage', 'pfsapaldetalle' , 'pfsapalestado', 'pfsapalcreatedat')
 
-abogadoSchema = AbogadoSchema()
-abogadoSchema = AbogadoSchema(many=True)
+asuntoslegalSchema = AsuntoslegalSchema()
+asuntoslegalSchema = AsuntoslegalSchema(many=True)
+
+
+#---------------------------
+#------------ Caso----------
+#--------------------------
+
+class Caso(db.Model):
+    __tablename__='pfsapcasos'
+
+    pfsapcasoid = db.Column(db.Integer, primary_key=True)
+    pfsapcasonombre = db.Column(db.String(80), nullable=False)
+    pfsapcasoimage = db.Column(db.String(300), nullable=False)
+    pfsapcasodetalle = db.Column(db.String(500), nullable=False)
+    pfsapcasoestado = db.Column(db.String(1), nullable=True)
+    pfsapcasocreatedat = db.Column(db.String(15), nullable=True) 
+
+    pfsapasislegid = db.Column(db.Integer, db.ForeignKey('pfsapasuntoslegales.pfsapalid',ondelete='CASCADE'), nullable=False)
+    pfsapasisleg = db.relationship('Asuntoslegal',backref=db.backref('pfsapcasos',lazy=True))
+
+
+    def __init__(self, pfsapcasonombre, pfsapcasoimage, pfsapcasodetalle, pfsapcasoestado, pfsapcasocreatedat, pfsapabogadogid, pfsapasislegid):
+        self.pfsapcasonombre = pfsapcasonombre
+        self.pfsapcasoimage = pfsapcasoimage
+        self.pfsapcasodetalle = pfsapcasodetalle
+        self.pfsapcasoestado = pfsapcasoestado
+        self.pfsapcasocreatedat = pfsapcasocreatedat
+        self.pfsapabogadogid = pfsapabogadogid
+        self.pfsapasislegid = pfsapasislegid
+
+
+class CasoSchema(ma.Schema):
+    class Meta:
+        fields = ( 'pfsapcasoid', 'pfsapalnombre', 'pfsapalimage', 'pfsapaldetalle', 'pfsapalestado', 'pfsapalcreatedat', 'pfsapabgid', 'pfsapalid')
+
+casoSchema = CasoSchema()
+casoSchema = CasoSchema(many=True)
 

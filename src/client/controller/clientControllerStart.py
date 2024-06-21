@@ -1,11 +1,19 @@
-from src.heart.heartController import *
+from src.heart.heartSistem import *
 from src.util.utilVoice import *
 
 class ClientControllerStart:
 
     def onGetClientControllerStart():
-        text = "Buenos diaz Caballero, este es tu asistente personal para cualquier duda navegue en la parte de la navegacion para las consultas"
+        text =  """
+                Mis estimados clientes, le saluda el asistente personal de la doctora, Luz Estrella,
+                en la que ella ofrece sus servicios de asuntos legales como: familia, civil, laboral, 
+                actos notariales y penales, para seguridad de que la abogada se encuentra activa, el 
+                carnet lo pueden visualizar en la pantalla principal y buscarle en el foro de abogados, 
+                es un gusto atenderle y tenga un buen dia.
+                """
+        
         onGetMultiProccessingVoz(text)
+        
         return render('index.html')
     
     def onGetClientControllerCarnet():
