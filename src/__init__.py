@@ -22,6 +22,9 @@ def apprun():
     ma.init_app(app)
     loginManager.init_app(app)
     #----------Admin----------
+    app.register_blueprint(aru)
+    app.register_blueprint(aral)
+    app.register_blueprint(arc)
     #----------Auth----------
     app.register_blueprint(ardbm)
     app.register_blueprint(arulgn)

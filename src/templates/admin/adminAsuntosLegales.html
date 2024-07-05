@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% import 'admin/modal/adminModalAsuntosLegales.html' as amalsaveupdate %}
+{% block title %}
+{{ super() }}
+Admin User
+{% endblock%}
+
+{% block content %}
+<div class="container">
+    <a href="{{ url_for('aral.onGetAdminControllerUserModalAsuntosLegalesSaveView') }}" class="btn btn-primary btn-lg">Add
+        Asunto Legal</a>
+    {% if save is true %}
+    {{ amalsaveupdate.adminModalAsuntoLegalSave("Registro de Asuntos Legales",adminFormsWtfAsuntosLegales) }}
+    {% endif %}
+    {% if update is true %}
+    {{ amalsaveupdate.adminModalUserUpdate("Actualización de Usuarios", adminFormsWtfUser, dataUser) }}
+    {% endif %}
+    <hr>
+    <div class="row">
+        <div class="col-8">
+            <strong>Buscar Por: {{ tag }}</strong>
+        </div>
+        <div class="col-4">
+            <form action="" method="post" autocomplete="off">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="text" class="form-control" name="tag" id="tag" placeholder="Nombre..." />
+                    </div>
+                    <div class="col-6" align="left">
+                        <input type="submit" value="Search" class="form-control btn btn-primary " name="">
+                    </div>
+            </form>
+        </div>
+    </div>
+    <div class="table-responsive">
+
+        <table class="table text-center">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">CreatedAt</th>
+                    <th scope="col" colspan="2">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if asisLegalList != []: %}
+                {% for item in asisLegalList.items %}
+                <tr>
+                    <th scope="row">{{item.pfsusersid}}</th>
+                    <td>{{item.pfsapalnombre}}</td>
+                    <td><img style="width: 50px ; height: 50px ;" src="{{item.pfsapalimage}}" alt=""></td>
+                    <td>{{item.pfsapaldetalle}}</td>
+                    <td>{{item.pfsapalestado}}</td>
+                    <td>{{item.pfsapalcreatedat}}</td>
+                    <td>
+                        <button>
+                            <a href="#">
+                                actualizar
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button>
+                            <a href="#">Eliminar
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="9">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        {% if asisLegalList != []: %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if asisLegalList.has_prev %}
+                <li class="page-item"> <a class="page-link"
+                        href="{{ url_for('aral.onGetAdminControllerAsuntosLegalesListView', page=asisLegalList.prev_num )}}">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item"> <a class="page link btn disabled" href="#">Previous</a></li>
+                {% endif %}
+                {% for page in asisLegalList.iter_pages(left_edge=3, right_edge=3) %}
+                {% if page %}
+
+                {% if page==asisLegalList.page %}
+                <li class="page-item active"><a class="page-link"
+                        href="{{ url_for('aral.onGetAdminControllerAsuntosLegalesListView', page=page) }}">{{ page
+                        }}</a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link"
+                        href="{{ url_for('aral.onGetAdminControllerAsuntosLegalesListView', page=page) }}">{{ page
+                        }}</a></li>
+                {% endif %}
+
+                {% else %}
+                <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if asisLegalList.has_next %}
+                <li class="page-item"> <a class="page-link"
+                        href="{{ url_for('aral.onGetAdminControllerAsuntosLegalesListView', page=asisLegalList.next_num )}}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item"> <a class="page link btn disabled" href="#">Previous</a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</div>
+{% block custom_scripts %}
+{% if (save is true) or (update is true) %}
+<script>
+    window.onload = function () {
+        $("#asuntoLegalsave").modal("show");
+        $("#userupdate").modal("show");
+    }
+</script>
+{% endif %}
+{% endblock %}
+{% endblock %}

@@ -9,19 +9,19 @@ def createDB():
 def initDB():
     createDB()
     
-    user = User( pfsuserscedula = "1725302705", 
+    user = User(pfsuserscedula = "1725302705", 
                 pfsusersnombres = "edgar fabian",
                 pfsusersapellidos = "estrella guambuguete",
                 pfsusersusername = "starfaby",
                 pfsusersemail = "star._faby@hotmail.com",
                 pfsuserspassword = "star123",
                 pfsusersdireccion = "Ferroviaria Media Adrian Navarro S11-82 y puna",  
-                pfsuserscellphone = "0983856136", 
-                pfsusersphone = "022647002",
+                pfsuserscelular = "0983856136", 
+                pfsuserstelefono = "022647002",
                 pfsusersisadmin = True,
                 pfsusersavatar = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg", 
                 pfsusersestado = 1,
-                pfsuserscreatedat = "https://res.cloudinary.com/dqmbrjl7jfs/image/upload/v1638923678/starfaby_uqbwru.jpg"
+                pfsuserscreatedat = datetime.now()
                 )
     user.onGetSetPassword(user.pfsuserspassword)
     db.session.add(user)

@@ -8,3 +8,18 @@
 #-------------
 from src.auth.services.authServiceAdminLoginIn import AuthServiceAdminLoginIn 
 from src.auth.services.authServiceUserLoginIn import AuthServiceUserLoginIn 
+
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#----------------------------------ADMIN SERVICES---------------------------------------
+#--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
+#-------------
+# SERVICES USER
+#-------------
+from src.admin.service.adminServiceUser import AdminServiceUser
+from src.admin.service.adminServiceAsuntosLegales import AdminServiceAsuntosLegales
+from src.admin.service.adminServiceCaso import AdminServiceCaso
+
+
+
