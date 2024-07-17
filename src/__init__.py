@@ -25,11 +25,16 @@ def apprun():
     app.register_blueprint(aru)
     app.register_blueprint(aral)
     app.register_blueprint(arc)
+    app.register_blueprint(arp)
     #----------Auth----------
     app.register_blueprint(ardbm)
     app.register_blueprint(arulgn)
     app.register_blueprint(araulgt)
     #----------Client----------
     app.register_blueprint(crs)
+    app.register_blueprint(cral)
+    app.register_blueprint(crc)
+    app.register_blueprint(crp)
+    app.register_blueprint(crmpv)
 
     return app

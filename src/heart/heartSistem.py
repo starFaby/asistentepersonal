@@ -15,6 +15,7 @@ from wtforms import StringField, SelectField
 from wtforms_sqlalchemy.fields import QuerySelectField
 from wtforms.validators import InputRequired
 from flask_wtf import FlaskForm
+import pandas as pd
 
 
 db = SQLAlchemy()

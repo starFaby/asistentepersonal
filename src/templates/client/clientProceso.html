@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% import 'client/modal/clientModalProcesoVoz.html' as campv %}
+{% block title %}
+{{ super() }}
+Caso
+{% endblock%}
+{% block content %}
+<div class="container">
+    {% if verModal is true %}
+    {{ campv.adminModalProcesoVoz("Asistente Personal") }}
+    {% endif %}
+    <div class="well text-center display-3 m-3">Proceso</div>
+    {% if procesoList != []: %}
+    <div class="row">
+        {% for item in procesoList %}
+        <div class="col-md-3">
+            <a href="{{ url_for('crmpv.onGetClientControllerModalProcesoVoz', id=item.pfsaprcsid) }}" class="">
+                <div class="card imghover" style="width: 18rem; margin: 5px;">
+                    <img style="width: 100%; height:100px ;" class="card-img-top" src="https://res.cloudinary.com/dvqgk49zn/image/upload/v1721234554/aux/voz_xxcaqy.png"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{item.pfsaprcsnombre}}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <h2 class="text-center" style="padding: 30px; font-size: 3vw ;">NO EXISTE PROCESOS</h2>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% block custom_scripts %}
+{% if (verModal is true) or (update is true) %}
+<script>
+    window.onload = function () {
+        $("#modprocvoz").modal("show");
+    }
+</script>
+{% endif %}
+{% endblock %}
+{% endblock %}

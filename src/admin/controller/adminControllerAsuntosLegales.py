@@ -7,7 +7,8 @@ class AdminControllerAsuntosLegales:
             if current_user.is_authenticated:
                 page = page
                 asisLegalList = AdminServiceAsuntosLegales.onGetAdminServiceAsuntosLegales(page)
-                if asisLegalList != []:
+                
+                if asisLegalList.items != []:
                     if request.method == 'POST' and 'tag' in request.form:
                         tag = request.form["tag"]
                         search = "%{}%".format(tag)
