@@ -1,5 +1,4 @@
-
-{% macro adminModalProcesoVoz(title) %}
+{% macro adminModalProcesoVoz(title, modProcVoz) %}
 <div class="modal" id="modprocvoz" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -9,7 +8,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Escuachando al asistente
+                {% for item in modProcVoz %}
+                <a href="{{ url_for('crmpv.onGetClientControllerModalProcesoVoz', id=item.pfsaprcsid) }}">
+                    <h2 class="text-center display-4">Escuachar</h2>
+                    <img style="width: 100%; height:150px ;" class="card-img-top"
+                        src="https://res.cloudinary.com/dvqgk49zn/image/upload/v1721408517/aux/vozanimate_knojmx.gif"
+                        alt="Card image cap">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block">Pulse Escuchar</button>
+                </a>
+                {% endfor %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
