@@ -16,6 +16,13 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 from wtforms.validators import InputRequired
 from flask_wtf import FlaskForm
 import pandas as pd
+import pyttsx3
+import webbrowser 
+import multiprocessing
+import os
+import time
+import playsound
+from gtts import gTTS
 
 
 db = SQLAlchemy()

@@ -1,6 +1,6 @@
 from src.heart.heartSistem import *
 from src.heart.heartServices import *
-from src.util.utilVoice import *
+from src.heart.heartUtil import *
 class ClientControllerModalProcesoVoz:
     def onGetClientControllerModalProceso(id):
         try:
@@ -25,8 +25,10 @@ class ClientControllerModalProcesoVoz:
                 for item in modProcVoz:
                     assisVoz = item.pfsaprcsdetalle
                     idAux = item.pfsapcasoid
+                print('type(assisVoz)')
                 print(type(assisVoz))
-                onGetMultiProccessingVoz(assisVoz)
+                print('type(assisVoz)')
+                onGetMultiProccessingAudioVoz(assisVoz)
                 return redirect(url_for('crp.onGetClientControllerProcesoListView', id=idAux))
         #return redirect(url_for(crp.onGetClientControllerProcesoListView', id=item.pfsapcasoid))) 
         except SQLAlchemyError as e:

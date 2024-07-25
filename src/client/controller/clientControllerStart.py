@@ -1,5 +1,5 @@
 from src.heart.heartSistem import *
-from src.util.utilVoice import *
+from src.heart.heartUtil import *
 
 class ClientControllerStart:
 
@@ -12,7 +12,8 @@ class ClientControllerStart:
                 es un gusto atenderle y tenga un buen dia.
                 """
         
-        onGetMultiProccessingVoz(text)
+        #onGetMultiProccessingVoz(text)
+        onGetMultiProccessingAudioVoz(text)
         
         return render('index.html')
     

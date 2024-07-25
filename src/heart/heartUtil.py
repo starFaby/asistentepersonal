@@ -2,6 +2,5 @@
 #--UTIL--
 #----------
 # VOZ
-import pyttsx3
-import webbrowser 
-import multiprocessing
+from src.util.utilVoice import *
+from src.util.utilAudioVoice import *

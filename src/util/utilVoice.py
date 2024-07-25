@@ -1,4 +1,4 @@
-from src.heart.heartUtil import *
+from src.heart.heartSistem import *
 
 def onGetMultiProccessingVoz(text):
         proceso = multiprocessing.Process(target=onGetVoz, args=(text,))
