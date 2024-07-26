@@ -189,6 +189,7 @@ class Proceso(db.Model):
     pfsaprcsid = db.Column(db.Integer, primary_key=True)
     pfsaprcsnombre = db.Column(db.String(80), nullable=False)
     pfsaprcsdetalle = db.Column(db.String(500), nullable=False)
+    pfsaprcsaudiovoz = db.Column(db.String(500), nullable=False)
     pfsaprcsestado = db.Column(db.String(1), nullable=True)
     pfsaprcscreatedat = db.Column(db.String(15), nullable=True) 
 
@@ -196,9 +197,10 @@ class Proceso(db.Model):
     pfsapcaso = db.relationship('Caso',backref=db.backref('pfsaproceso',lazy=True))
 
 
-    def __init__(self, pfsaprcsnombre, pfsaprcsdetalle, pfsaprcsestado, pfsaprcscreatedat, pfsapcasoid):
+    def __init__(self, pfsaprcsnombre, pfsaprcsdetalle, pfsaprcsaudiovoz, pfsaprcsestado, pfsaprcscreatedat, pfsapcasoid):
         self.pfsaprcsnombre = pfsaprcsnombre
         self.pfsaprcsdetalle = pfsaprcsdetalle
+        self.pfsaprcsaudiovoz = pfsaprcsaudiovoz
         self.pfsaprcsestado = pfsaprcsestado
         self.pfsaprcscreatedat = pfsaprcscreatedat
         self.pfsapcasoid = pfsapcasoid
@@ -206,7 +208,7 @@ class Proceso(db.Model):
 
 class ProcesoSchema(ma.Schema):
     class Meta:
-        fields = ( 'pfsaprcsid', 'pfsaprcsnombre', 'pfsaprcsdetalle', 'pfsaprcsestado', 'pfsaprcscreatedat', 'pfsapcasoid')
+        fields = ( 'pfsaprcsid', 'pfsaprcsnombre', 'pfsaprcsdetalle', 'pfsaprcsaudiovoz', 'pfsaprcsestado', 'pfsaprcscreatedat', 'pfsapcasoid')
 
 procesoSchema = ProcesoSchema()
 procesoSchema = ProcesoSchema(many=True)

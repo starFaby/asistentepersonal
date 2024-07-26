@@ -50,12 +50,13 @@ class AdminControllerProceso:
         if formProceso.validate_on_submit():
             nombre = formProceso.nombre.data
             detalle = formProceso.detalle.data
+            audiovoz = formProceso.audiovoz.data
             estado = formProceso.estado.data 
             selectcs = formProceso.selectcs.data 
             createdat = datetime.now()
             casoId=selectcs.pfsapcasoid
             
-            resultSave = AdminServiceProceso.onGetAdminServiceProcesoSave(id, nombre, detalle, estado, createdat, casoId)
+            resultSave = AdminServiceProceso.onGetAdminServiceProcesoSave(id, nombre, detalle, audiovoz , estado, createdat, casoId)
             if resultSave is True:
                 flash('Proceso Guardado Exitosamente', category='success')
                 return redirect(url_for('arp.onGetAdminControllerProcesoListView'))

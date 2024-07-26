@@ -13,13 +13,21 @@ class ClientControllerStart:
                 """
         
         #onGetMultiProccessingVoz(text)
-        onGetMultiProccessingAudioVoz(text)
+        #onGetMultiProccessingAudioVoz(text)
         
         return render('index.html')
     
     def onGetClientControllerCarnet():
         context = {
-            'vmcarnet': True
+            'vmcarnet': True,
+            'vmpresabg': False
+        }
+        return render('index.html', **context)
+    
+    def onGetClientControllerPresentacionAbg():
+        context = {
+            'vmcarnet': False, 
+            'vmpresabg': True 
         }
         return render('index.html', **context)
 

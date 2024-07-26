@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% import 'modal/modalCarnetAbogada.html' as macroModaCarAb %}
+{% import 'modal/clientModalPresentacionAbg.html' as macroModaPresAbg %}
 {% block title %}
 {{ super() }}
 Index
@@ -9,10 +10,13 @@ Index
     {% if vmcarnet is true: %}
     {{ macroModaCarAb.macroModalCarnetAbogada("Abogada Luz Estrella") }}
     {% endif %}
+    {% if vmpresabg is true: %}
+    {{ macroModaPresAbg.adminModalPresentacionAbg("Abogada Luz Estrella") }}
+    {% endif %}
     <div class="row">
         <div class="col-md-3">
             <div class="row p-2">
-                <a href="/crs">
+                <a href="{{ url_for('crs.onGetClientControllerPresentacionAbg')}}">
                     <button class="buttonAnimate">
                     Informacion Abogada
                     <span></span>
@@ -62,10 +66,11 @@ Index
     </div>
 </div>
 {% block custom_scripts %}
-{% if (vmcarnet is true)%}
+{% if (vmcarnet is true) or (vmpresabg is true)%}
 <script>
     window.onload = function () {
         $("#mcarnetabogada").modal("show");
+        $("#modpresenabg").modal("show");
     } 
 </script>
 {% endif %}

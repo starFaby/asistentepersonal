@@ -1,9 +1,10 @@
 class AdminModelProceso():
 
-    def __init__(self, id , nombre, detalle, estado, createdat, casoId):
+    def __init__(self, id , nombre, detalle, audiovoz, estado, createdat, casoId):
         self.id = id
         self.nombre = nombre
-        self.detalle = detalle
+        self.detalle = detalle 
+        self.audiovoz = audiovoz 
         self.estado = estado
         self.createdat = createdat 
         self.casoId = casoId 
@@ -42,6 +43,17 @@ class AdminModelProceso():
     
     def setdetalle(self, detalle):
         self.detalle = detalle
+
+    #--------------------
+    #--------------------
+    # get y set audiovoz
+    #---------------------
+    #---------------------
+    def getaudiovoz(self):
+        return self.audiovoz
+    
+    def setaudiovoz(self, audiovoz):
+        self.audiovoz = audiovoz
 
 
     #--------------------
@@ -91,6 +103,7 @@ class AdminModelProceso():
             'id' : self.id,
             'nombre' : self.nombre,
             'detalle' : self.detalle,
+            'audiovoz' : self.audiovoz,
             'estado' : self.estado,
             'createdat' : self.createdat,
             'casoId' : self.casoId

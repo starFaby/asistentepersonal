@@ -4,7 +4,7 @@
 #----------
 #Controller
 #clientControllerStart
-
+from src.client.controller.clientControllerStart import ClientControllerStart
 
 #----------
 #--CLIENT--

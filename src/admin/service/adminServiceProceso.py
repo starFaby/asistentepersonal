@@ -37,17 +37,18 @@ class AdminServiceProceso:
             return render('errors/error500.html')
         
     @classmethod
-    def onGetAdminServiceProcesoSave(self, id, nombre, detalle, estado, createdat, casoId):
-        modelProceso = AdminModelProceso(id,nombre,detalle,estado,createdat,casoId)
+    def onGetAdminServiceProcesoSave(self, id, nombre, detalle, audiovoz, estado, createdat, casoId):
+        modelProceso = AdminModelProceso(id,nombre,detalle, audiovoz,estado,createdat,casoId)
         
         newProceso = Proceso(
             pfsaprcsnombre = modelProceso.getnombre(),
             pfsaprcsdetalle = modelProceso.getdetalle(),
+            pfsaprcsaudiovoz = modelProceso.getaudiovoz(),
             pfsaprcsestado = modelProceso.getestado(),
             pfsaprcscreatedat = modelProceso.getcreatedat(),
             pfsapcasoid = modelProceso.getcasoId()
         )
-        if modelProceso.getnombre() != '' and modelProceso.getdetalle() != '' and modelProceso.getestado() != '' and modelProceso.getcreatedat() != '' and modelProceso.getcasoId() != '' :
+        if modelProceso.getnombre() != '' and modelProceso.getdetalle() != '' and modelProceso.getaudiovoz() != '' and modelProceso.getestado() != '' and modelProceso.getcreatedat() != '' and modelProceso.getcasoId() != '' :
             db.session.add(newProceso)
             db.session.commit()
             return True

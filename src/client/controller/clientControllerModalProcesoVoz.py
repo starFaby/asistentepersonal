@@ -25,10 +25,8 @@ class ClientControllerModalProcesoVoz:
                 for item in modProcVoz:
                     assisVoz = item.pfsaprcsdetalle
                     idAux = item.pfsapcasoid
-                print('type(assisVoz)')
-                print(type(assisVoz))
-                print('type(assisVoz)')
-                onGetMultiProccessingAudioVoz(assisVoz)
+                
+                #onGetMultiProccessingAudioVoz(assisVoz)
                 return redirect(url_for('crp.onGetClientControllerProcesoListView', id=idAux))
         #return redirect(url_for(crp.onGetClientControllerProcesoListView', id=item.pfsapcasoid))) 
         except SQLAlchemyError as e:

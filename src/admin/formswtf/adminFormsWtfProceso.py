@@ -4,5 +4,6 @@ class AdminFormsWtfProceso(FlaskForm):
     id = StringField('id')
     nombre = StringField('nombre', validators=[InputRequired(message="El Nombre es requerido")])
     detalle = StringField('detalle', validators=[InputRequired(message="El Detalle es requerido")])
+    audiovoz = StringField('audiovoz', validators=[InputRequired(message="El audiovoz es requerido")])
     estado = SelectField('estado', choices=[('1','Activo'), ('2','Inactivo')])
     selectcs = QuerySelectField(query_factory= AdminServiceProceso.onGetAdminServiceCasoList, allow_blank=True, get_label='pfsapcasonombre')
