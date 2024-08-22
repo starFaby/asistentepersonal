@@ -5,5 +5,5 @@ class AdminFormsWtfCaso(FlaskForm):
     nombre = StringField('nombre', validators=[InputRequired(message="Los nombres son requerido")])
     image = StringField('image', validators=[InputRequired(message="Los apellidos son requerido")])
     detalle = StringField('detalle', validators=[InputRequired(message="Los apellidos son requerido")])
-    selectal = QuerySelectField(query_factory= AdminServiceCaso.onGetAdminServiceAsuntoLegalList, allow_blank=True, get_label='pfsapalnombre')
+    selectal = QuerySelectField(query_factory= AdminServiceCaso.onGetAdminServiceSelectAsuntoLegal, allow_blank=True, get_label='pfsapalnombre')
     estado = SelectField('estado', choices=[('1','Activo'), ('2','Inactivo')])

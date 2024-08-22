@@ -41,3 +41,39 @@ class AdminServiceAsuntosLegales:
             return True
         else:
             return False
+        
+    @classmethod
+    def onGetAdminSericeUserModalAsuntosLegalesUpdateView(self, id):
+        asunlegdataOne = Asuntoslegal.query.filter(Asuntoslegal.pfsapalid == id).one_or_none()
+        return asunlegdataOne
+    
+
+    @classmethod
+    def onGetAdminServiceUserModalAsuntosLegalesUpdate(self, id, nombre, image, detalle, estado, createdat):
+        modelAsuntoLegal = AdminModelAsuntoLegal(id, nombre, image, detalle, estado, createdat)
+        asuntoLegal = Asuntoslegal.query.get(modelAsuntoLegal.getid())
+
+        asuntoLegal.pfsapalnombre = modelAsuntoLegal.getnombre()
+        asuntoLegal.pfsapalimage = modelAsuntoLegal.getimage()
+        asuntoLegal.pfsapaldetalle = modelAsuntoLegal.getdetalle()
+        asuntoLegal.pfsapalestado = modelAsuntoLegal.getestado()
+
+        if modelAsuntoLegal.getnombre() != '' and  modelAsuntoLegal.getimage() != '' and modelAsuntoLegal.getdetalle() != '' and modelAsuntoLegal.getestado() != '' and modelAsuntoLegal.getcreatedat() != '' :
+            db.session.commit()
+            return True
+        else:
+            return False
+        
+
+    @classmethod
+    def onGetAdminServiceAsuntosLegalesDelete(self, id):
+        try:
+            asuntolegal = Asuntoslegal.query.get(id)
+            asuntolegal.pfsapalestado = 0
+            if asuntolegal.pfsapalestado != '':
+                db.session.commit()
+                return True
+            else:
+                return False
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)

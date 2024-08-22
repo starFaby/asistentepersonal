@@ -13,7 +13,7 @@ Admin User
     {{ amalsaveupdate.adminModalAsuntoLegalSave("Registro de Asuntos Legales",adminFormsWtfAsuntosLegales) }}
     {% endif %}
     {% if update is true %}
-    {{ amalsaveupdate.adminModalUserUpdate("Actualización de Usuarios", adminFormsWtfUser, dataUser) }}
+    {{ amalsaveupdate.adminModalAsuntoLegalUpdate("Actualización de Usuarios", adminFormsWtfAsuntosLegales, dataUser) }}
     {% endif %}
     <hr>
     <div class="row">
@@ -58,14 +58,14 @@ Admin User
                     <td>{{item.pfsapalcreatedat}}</td>
                     <td>
                         <button>
-                            <a href="#">
+                            <a href="{{ url_for('aral.onGetAdminControllerUserModalAsuntosLegalesUpdateView', id=item.pfsapalid) }}">
                                 actualizar
                             </a>
                         </button>
                     </td>
                     <td>
                         <button>
-                            <a href="#">Eliminar
+                            <a href="{{ url_for('aral.onGetAdminControllerAsuntosLegalesDelete', id=item.pfsapalid) }}">Eliminar
                             </a>
                         </button>
                     </td>
@@ -129,7 +129,7 @@ Admin User
 <script>
     window.onload = function () {
         $("#asuntoLegalsave").modal("show");
-        $("#userupdate").modal("show");
+        $("#asuntoLegalUpdate").modal("show");
     }
 </script>
 {% endif %}

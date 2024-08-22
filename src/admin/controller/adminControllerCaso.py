@@ -40,8 +40,8 @@ class AdminControllerCaso:
         except SQLAlchemyError as e:
             return render('errors/error500.html', e)
     
-    def onGetAdminControllerAsuntoLegalList():
-        return AdminServiceCaso.onGetAdminServiceAsuntoLegalList()
+    def onGetAdminControllerSelectAsuntoLegal():
+        return AdminServiceCaso.onGetAdminServiceSelectAsuntoLegal()
 
         
     def onGetAdminControllerModalCasoSave():
@@ -61,6 +61,47 @@ class AdminControllerCaso:
                 return redirect(url_for('arc.onGetAdminControllerCasoListView'))
             else:
                 flash('Error al guardar los datos', category='error')
+                return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+        else:
+            flash('Campos vacios, llene porfabor', category='info')
+            return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+        
+    def onGetAdminControllerModalCasoUpdateView(id):
+        dataCaso = AdminServiceCaso.onGetAdminServiceDataCasoOne(id)
+        print('dataCaso')
+        print(dataCaso.pfsapcasonombre)
+        print('dataCaso')
+        casoList = []
+        context = {
+            'adminFormsWtfCaso': AdminFormsWtfCaso(),
+            "save": False,
+            "update": True,
+            "casoList": casoList,
+            "dataCaso": dataCaso
+        }
+        try: 
+            return render("admin/adminCaso.html", **context)
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)
+        
+    def onGetAdminControllerCasoUpdate():
+        formCaso = AdminFormsWtfCaso()
+        if formCaso.validate_on_submit():
+            id = formCaso.id.data
+            nombre = formCaso.nombre.data
+            image = formCaso.image.data
+            detalle = formCaso.detalle.data
+            selectal = formCaso.selectal.data 
+            estado = formCaso.estado.data 
+            createdat = datetime.now()
+            asunlegal=selectal.pfsapalid
+            
+            resultSave = AdminServiceCaso.onGetAdminServiceCasoupdate(id, nombre, image, detalle, estado, createdat, asunlegal)
+            if resultSave is True:
+                flash('Actualizado Exitosamente', category='success')
+                return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+            else:
+                flash('Error al actualizar los datos', category='error')
                 return redirect(url_for('arc.onGetAdminControllerCasoListView'))
         else:
             flash('Campos vacios, llene porfabor', category='info')

@@ -56,3 +56,57 @@ class AdminControllerAsuntosLegales:
             else:
                 flash('Error al Guardar', category='error')
                 return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+            
+    
+    def onGetAdminControllerUserModalAsuntosLegalesUpdateView(id):
+        dataUser = AdminServiceAsuntosLegales.onGetAdminSericeUserModalAsuntosLegalesUpdateView(id)
+        asisLegalList = []
+        context = {
+            'adminFormsWtfAsuntosLegales': AdminFormsWtfAsuntosLegales(),
+            "save": False,
+            "update": True,
+            "dataUser": dataUser,
+            'asisLegalList':asisLegalList
+        }
+        try: 
+            return render("admin/adminAsuntosLegales.html", **context)
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)
+        
+    def onGetAdminControllerUserModalAsuntosLegalesUpdate():
+        try:
+            formAsunLegal = AdminFormsWtfAsuntosLegales()
+            if current_user.is_authenticated:
+                if formAsunLegal.validate_on_submit():
+                    id = formAsunLegal.id.data
+                    nombre = formAsunLegal.nombre.data
+                    image = formAsunLegal.image.data
+                    detalle = formAsunLegal.detalle.data
+                    estado = formAsunLegal.estado.data
+                    createdat = datetime.now()
+
+                    asuntoLegalUpdate = AdminServiceAsuntosLegales.onGetAdminServiceUserModalAsuntosLegalesUpdate(id, nombre, image, detalle, estado, createdat)
+                    if asuntoLegalUpdate is True:
+                        return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+                    else:
+                        return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+                else:
+                    return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+
+            else:
+                return render("auth/loginin.html")
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e) 
+        
+    def onGetAdminControllerAsuntosLegalesDelete(id):
+        try:
+            if current_user.is_authenticated:
+                user = AdminServiceAsuntosLegales.onGetAdminServiceAsuntosLegalesDelete(id)
+                if user is True:
+                    return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+                else:
+                    return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
+            else:
+                return render("auth/loginin.html")
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e) 

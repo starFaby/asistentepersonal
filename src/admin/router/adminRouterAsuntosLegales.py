@@ -6,7 +6,7 @@ aral.route('/aral', methods=['GET', 'POST'], defaults={"page": 1})(AdminControll
 aral.route('/aral/<int:page>', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerAsuntosLegalesListView)
 aral.route('/aralmsv', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerUserModalAsuntosLegalesSaveView)
 aral.route('/aralms', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerUserModalAsuntosLegalesSave)
-#aru.route('/arumu/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserModalUpdateView)
-#aru.route('/aruu', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserUpdate)
-#aru.route('/arud/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserDelete)
+aral.route('/aralmuv/<int:id>', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerUserModalAsuntosLegalesUpdateView)
+aral.route('/aralmu', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerUserModalAsuntosLegalesUpdate)
+aral.route('/arald/<int:id>', methods=['GET', 'POST'])(AdminControllerAsuntosLegales.onGetAdminControllerAsuntosLegalesDelete)
 

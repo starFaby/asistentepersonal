@@ -6,7 +6,7 @@ arc.route('/arc', methods=['GET', 'POST'], defaults={"page": 1})(AdminController
 arc.route('/arc/<int:page>', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerCasoListView)
 arc.route('/arcmsv', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerModalCasoSaveView)
 arc.route('/arcms', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerModalCasoSave)
-#aru.route('/arumu/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserModalUpdateView)
-#aru.route('/aruu', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserUpdate)
+arc.route('/arcmuv/<int:id>', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerModalCasoUpdateView)
+arc.route('/arcu', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerCasoUpdate)
 #aru.route('/arud/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserDelete)
 

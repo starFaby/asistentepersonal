@@ -39,7 +39,7 @@
 <!-------------------------------UPDATE USUARIO---------------------------------->
 <!------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------->
-{% macro adminModalAsuntoLegalUpdate(title, adminFormsWtfUser, dataUser) %}
+{% macro adminModalAsuntoLegalUpdate(title, adminFormsWtfAsuntosLegales, dataUser) %}
 <div class="modal" id="asuntoLegalUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -49,24 +49,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="/aralmu" method="post">
 
-                    {{ adminFormsWtfUser.csrf_token }}
-    
-                    {{renderField(adminFormsWtfUser.id, value=dataUser.pfsusersid)}}
-                    {{renderField(adminFormsWtfUser.cedula, value=dataUser.pfsuserscedula)}}
-                    {{renderField(adminFormsWtfUser.nombres, value=dataUser.pfsusersnombres)}}
-                    {{renderField(adminFormsWtfUser.apellidos, value=dataUser.pfsusersapellidos)}}
-                    {{renderField(adminFormsWtfUser.username, value=dataUser.pfsusersusername)}}
-                    {{renderField(adminFormsWtfUser.email, value=dataUser.pfsusersemail)}}
-                    {{renderField(adminFormsWtfUser.password, value=dataUser.pfsuserspassword)}}
-                    {{renderField(adminFormsWtfUser.direccion, value=dataUser.pfsusersdireccion)}}
-                    {{renderField(adminFormsWtfUser.celular, value=dataUser.pfsuserscelular)}}
-                    {{renderField(adminFormsWtfUser.telefono, value=dataUser.pfsuserstelefono)}}
-                    {{renderField(adminFormsWtfUser.estado, value=dataUser.pfsusersestado)}}
+                    {{ adminFormsWtfAsuntosLegales.csrf_token }}
+                    <div class="">
+                        {{ renderField(adminFormsWtfAsuntosLegales.id, value=dataUser.pfsapalid)}}
+                    </div>
+                    {{renderField(adminFormsWtfAsuntosLegales.nombre, value=dataUser.pfsapalnombre)}}
+                    {{renderField(adminFormsWtfAsuntosLegales.image, value=dataUser.pfsapalimage)}}
+                    {{renderField(adminFormsWtfAsuntosLegales.detalle, value=dataUser.pfsapaldetalle)}}
+                    {{renderField(adminFormsWtfAsuntosLegales.estado, value=dataUser.pfsapalestado)}}
                     
     
-                    <button class="btn btn-primary" type="submit" >Guardar</button>
+                    <button class="btn btn-primary" type="submit" >Actualizar</button>
                 </form>
             </div>
             <div class="modal-footer">
