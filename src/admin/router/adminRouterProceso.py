@@ -6,7 +6,7 @@ arp.route('/arp', methods=['GET', 'POST'], defaults={"page": 1})(AdminController
 arp.route('/arp/<int:page>', methods=['GET', 'POST'])(AdminControllerProceso.onGetAdminControllerProcesoListView)
 arp.route('/arpmsv', methods=['GET', 'POST'])(AdminControllerProceso.onGetAdminControllerModalProcesoSaveView)
 arp.route('/arpms', methods=['GET', 'POST'])(AdminControllerProceso.onGetAdminControllerModalProcesoSave)
-#aru.route('/arumu/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserModalUpdateView)
+arp.route('/arumu/<int:id>', methods=['GET', 'POST'])(AdminControllerProceso.onGetAdminControllerModalProcesoUpdateView)
 #aru.route('/aruu', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserUpdate)
 #aru.route('/arud/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserDelete)
 

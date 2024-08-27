@@ -66,3 +66,18 @@ class AdminControllerProceso:
         else:
             flash('Campos vacios, llene porfabor', category='info')
             return redirect(url_for('arp.onGetAdminControllerProcesoListView'))
+        
+    def onGetAdminControllerModalProcesoUpdateView():
+        dataProceso = []
+        procesoList = []
+        context = {
+            'adminFormsWtfProceso': AdminFormsWtfProceso(),
+            "save": False,
+            "update": True,
+            "procesoList": procesoList,
+            "dataProceso": dataProceso
+        }
+        try: 
+            return render("admin/adminProceso.html", **context)
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)

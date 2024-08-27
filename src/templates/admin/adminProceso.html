@@ -13,7 +13,7 @@ Admin User
     {{ amprocesosaveupdate.adminModalProcesoSave("Registro de Proceso",adminFormsWtfProceso) }}
     {% endif %}
     {% if update is true %}
-    {{ amalsaveupdate.adminModalUserUpdate("Actualización de Usuarios", adminFormsWtfUser, dataUser) }}
+    {{ amprocesosaveupdate.adminModalProcesoUpdate("Actualización de Usuarios", adminFormsWtfProceso, dataProceso) }}
     {% endif %}
     <hr>
     <div class="row">
@@ -58,7 +58,7 @@ Admin User
                     <td>{{item.pfsapcasoid}}</td>
                     <td>
                         <button>
-                            <a href="#">
+                            <a href="{{ url_for('arp.onGetAdminControllerModalProcesoUpdateView', id=item.pfsaprcsid) }}">
                                 actualizar
                             </a>
                         </button>
@@ -129,7 +129,7 @@ Admin User
 <script>
     window.onload = function () {
         $("#procesosave").modal("show");
-        $("#userupdate").modal("show");
+        $("#procesoUpdate").modal("show");
     }
 </script>
 {% endif %}

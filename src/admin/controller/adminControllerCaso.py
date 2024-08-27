@@ -106,3 +106,18 @@ class AdminControllerCaso:
         else:
             flash('Campos vacios, llene porfabor', category='info')
             return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+        
+    def onGetAdminControllerCasoDelete(id):
+        try:
+            if current_user.is_authenticated:
+                user = AdminServiceCaso.onGetAdminServiceCasoDelete(id)
+                if user is True:
+                    flash('Elimando Exitosamente', category='success')
+                    return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+                else:
+                    flash('Error al Eliminado', category='info')
+                    return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+            else:
+                return render("auth/loginin.html")
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e) 

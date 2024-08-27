@@ -86,4 +86,18 @@ class AdminServiceCaso:
                 return False
         except SQLAlchemyError as e:
             return render('errors/error500.html', e)
+        
+    @classmethod
+    def onGetAdminServiceCasoDelete(self, id):
+    
+        try:
+            casoEstado = Caso.query.get(id)
+            casoEstado.pfsapcasoestado = 0
+            if casoEstado.pfsapcasoestado != '':
+                db.session.commit()
+                return True
+            else:
+                return False
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)
 

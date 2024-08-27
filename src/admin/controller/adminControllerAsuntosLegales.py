@@ -87,13 +87,16 @@ class AdminControllerAsuntosLegales:
 
                     asuntoLegalUpdate = AdminServiceAsuntosLegales.onGetAdminServiceUserModalAsuntosLegalesUpdate(id, nombre, image, detalle, estado, createdat)
                     if asuntoLegalUpdate is True:
+                        flash('Actualizado Exitosamente', category='success')
                         return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
                     else:
+                        flash('Error al actualizar los datos', category='error')
                         return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
                 else:
                     return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
 
             else:
+                flash('Debe logearse primero', category='info')
                 return render("auth/loginin.html")
         except SQLAlchemyError as e:
             return render('errors/error500.html', e) 
@@ -103,10 +106,13 @@ class AdminControllerAsuntosLegales:
             if current_user.is_authenticated:
                 user = AdminServiceAsuntosLegales.onGetAdminServiceAsuntosLegalesDelete(id)
                 if user is True:
+                    flash('Eliminado Exitosamente', category='success')
                     return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
                 else:
+                    flash('Error al eliminar el dato', category='error')
                     return redirect(url_for('aral.onGetAdminControllerAsuntosLegalesListView'))
             else:
+                flash('Debe logearse primero', category='info')
                 return render("auth/loginin.html")
         except SQLAlchemyError as e:
             return render('errors/error500.html', e) 

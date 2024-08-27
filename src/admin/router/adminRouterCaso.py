@@ -8,5 +8,5 @@ arc.route('/arcmsv', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminCont
 arc.route('/arcms', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerModalCasoSave)
 arc.route('/arcmuv/<int:id>', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerModalCasoUpdateView)
 arc.route('/arcu', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerCasoUpdate)
-#aru.route('/arud/<int:id>', methods=['GET', 'POST'])(AdminControllerUser.onGetAdminControllerUserDelete)
+arc.route('/arud/<int:id>', methods=['GET', 'POST'])(AdminControllerCaso.onGetAdminControllerCasoDelete)
 
