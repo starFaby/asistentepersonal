@@ -6,7 +6,7 @@ Caso
 {% block content %}
 <div class="container">
     <div class="well text-center display-3 m-3">Caso</div>
-    {% if casoList.items != []: %}
+    {% if casoList.count() >= 1: %}
     <div class="row">
         {% for item in casoList %}
         <div class="col-md-3">

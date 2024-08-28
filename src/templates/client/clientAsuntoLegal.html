@@ -6,7 +6,7 @@ Categorias
 {% block content %}
 <div class="container">
     <div class="well text-center display-3 m-3">Asuntos Legales</div>
-    {% if asuntoLegal != []: %}
+    {% if asuntoLegal.count() >= 1: %}
     <div class="row">
         {% for item in asuntoLegal %}
         <div class="col-md-3">

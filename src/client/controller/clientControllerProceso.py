@@ -3,7 +3,7 @@ from src.heart.heartServices import *
 class ClientControllerProceso:
     def onGetClientControllerProcesoListView(id):
         try:
-                procesoList = ClientServiceProceso.ongetClientServiceProceso(id)
+                procesoList = pd.Series(ClientServiceProceso.ongetClientServiceProceso(id))
                 context = {
                     'procesoList':procesoList
                 }

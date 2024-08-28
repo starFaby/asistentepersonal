@@ -10,7 +10,7 @@ Caso
     {{ campv.adminModalProcesoVoz("Asistente Personal", modProcVoz) }}
     {% endif %}
     <div class="well text-center display-3 m-3">Proceso</div>
-    {% if procesoList != []: %}
+    {% if procesoList.count() >= 1: %}
     <div class="row">
         {% for item in procesoList %}
         <div class="col-md-3">
