@@ -110,8 +110,8 @@ class AdminControllerCaso:
     def onGetAdminControllerCasoDelete(id):
         try:
             if current_user.is_authenticated:
-                user = AdminServiceCaso.onGetAdminServiceCasoDelete(id)
-                if user is True:
+                caso = AdminServiceCaso.onGetAdminServiceCasoDelete(id)
+                if caso is True:
                     flash('Elimando Exitosamente', category='success')
                     return redirect(url_for('arc.onGetAdminControllerCasoListView'))
                 else:

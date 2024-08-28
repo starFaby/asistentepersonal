@@ -55,3 +55,45 @@ class AdminServiceProceso:
         else:
             return False
 
+    @classmethod
+    def onGetAdminServiceDataProcesoOne(self, id):
+        try:
+            dataProcesoOne = Proceso.query.filter(Proceso.pfsaprcsid == id).one_or_none()
+            return dataProcesoOne
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)
+
+    
+    @classmethod
+    def onGetAdminControllerModalProcesoUpdate(self,id,nombre,detalle, audiovoz,estado,createdat,casoId):
+        modelProceso = AdminModelProceso(id,nombre,detalle, audiovoz,estado,createdat,casoId)
+        proceso = Proceso.query.get(modelProceso.getid())
+
+        proceso.pfsaprcsnombre = modelProceso.getnombre(),
+        proceso.pfsaprcsdetalle = modelProceso.getdetalle(),
+        proceso.pfsaprcsaudiovoz = modelProceso.getaudiovoz(),
+        proceso.pfsaprcsestado = modelProceso.getestado(),
+        proceso.pfsaprcscreatedat = modelProceso.getcreatedat(),
+        proceso.pfsapcasoid = modelProceso.getcasoId()
+        
+        if modelProceso.getnombre() != '' and modelProceso.getdetalle() != '' and modelProceso.getaudiovoz() != '' and modelProceso.getestado() != '' and modelProceso.getcreatedat() != '' and modelProceso.getcasoId() != '' :
+            db.session.commit()
+            return True
+        else:
+            return False
+        
+    @classmethod
+    def onGetAdminServiceProcesoDelete(self, id):
+    
+        try:
+            procesoEstado = Proceso.query.get(id)
+            procesoEstado.pfsaprcsestado = 0
+            if procesoEstado.pfsaprcsestado != '':
+                db.session.commit()
+                return True
+            else:
+                return False
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e)
+
+

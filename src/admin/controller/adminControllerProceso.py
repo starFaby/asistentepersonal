@@ -67,8 +67,8 @@ class AdminControllerProceso:
             flash('Campos vacios, llene porfabor', category='info')
             return redirect(url_for('arp.onGetAdminControllerProcesoListView'))
         
-    def onGetAdminControllerModalProcesoUpdateView():
-        dataProceso = []
+    def onGetAdminControllerModalProcesoUpdateView(id):
+        dataProceso = AdminServiceProceso.onGetAdminServiceDataProcesoOne(id)
         procesoList = []
         context = {
             'adminFormsWtfProceso': AdminFormsWtfProceso(),
@@ -81,3 +81,41 @@ class AdminControllerProceso:
             return render("admin/adminProceso.html", **context)
         except SQLAlchemyError as e:
             return render('errors/error500.html', e)
+        
+    def onGetAdminControllerModalProcesoUpdate():
+        formProceso = AdminFormsWtfProceso()
+        if formProceso.validate_on_submit():
+            id = formProceso.id.data
+            nombre = formProceso.nombre.data
+            detalle = formProceso.detalle.data
+            audiovoz = formProceso.audiovoz.data
+            estado = formProceso.estado.data 
+            selectcs = formProceso.selectcs.data 
+            createdat = datetime.now()
+            casoId=selectcs.pfsapcasoid
+            
+            resultSave = AdminServiceProceso.onGetAdminControllerModalProcesoUpdate(id, nombre, detalle, audiovoz , estado, createdat, casoId)
+            if resultSave is True:
+                flash('Proceso Actualizado Exitosamente', category='success')
+                return redirect(url_for('arp.onGetAdminControllerProcesoListView'))
+            else:
+                flash('Error al Actualizar los datos', category='error')
+                return redirect(url_for('arp.onGetAdminControllerProcesoListView'))
+        else:
+            flash('Campos vacios, llene porfabor', category='info')
+            return redirect(url_for('arp.onGetAdminControllerProcesoListView'))
+        
+    def onGetAdminControllerProcesoDelete(id):
+        try:
+            if current_user.is_authenticated:
+                proceso = AdminServiceProceso.onGetAdminServiceProcesoDelete(id)
+                if proceso is True:
+                    flash('Elimando Exitosamente', category='success')
+                    return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+                else:
+                    flash('Error al Eliminado', category='info')
+                    return redirect(url_for('arc.onGetAdminControllerCasoListView'))
+            else:
+                return render("auth/loginin.html")
+        except SQLAlchemyError as e:
+            return render('errors/error500.html', e) 

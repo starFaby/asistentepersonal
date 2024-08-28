@@ -50,15 +50,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="{{ url_for('arp.onGetAdminControllerModalProcesoUpdate') }}" method="post">
 
                     {{ adminFormsWtfProceso.csrf_token }}
     
-                    {{renderField(adminFormsWtfProceso.id, value=dataUser.pfsusersid)}}
-                    {{renderField(adminFormsWtfProceso.nombre, value=dataUser.pfsusersid)}}
-                    {{renderField(adminFormsWtfProceso.detalle, value=dataUser.pfsusersid)}}
-                    {{renderField(adminFormsWtfProceso.audiovoz, value=dataUser.pfsusersid)}}
-                    {{renderField(adminFormsWtfProceso.estado, value=dataUser.pfsusersid)}}
+                    {{renderField(adminFormsWtfProceso.id, value=dataProceso.pfsaprcsid)}}
+                    {{renderField(adminFormsWtfProceso.nombre, value=dataProceso.pfsaprcsnombre)}}
+                    {{renderField(adminFormsWtfProceso.detalle, value=dataProceso.pfsaprcsdetalle)}}
+                    {{renderField(adminFormsWtfProceso.audiovoz, value=dataProceso.pfsaprcsaudiovoz)}}
+                    {{renderField(adminFormsWtfProceso.estado, value=dataProceso.pfsaprcsestado)}}
                     {{renderField(adminFormsWtfProceso.selectcs)}}
 
                     <button class="btn btn-primary" type="submit" >Guardar</button>
