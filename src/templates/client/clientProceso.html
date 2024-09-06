@@ -13,7 +13,7 @@ Caso
     {% if procesoList.count() >= 1: %}
     <div class="row">
         {% for item in procesoList %}
-        <div class="col-md-3">
+        <div class="col-md-3 d-flex justify-content-center">
             <a href="{{ url_for('crmpv.onGetClientControllerModalProceso', id=item.pfsaprcsid) }}" class="">
                 <div class="card imghover" style="width: 18rem; margin: 5px;">
                     <img style="width: 100%; height:100px ;" class="card-img-top" src="https://res.cloudinary.com/dvqgk49zn/image/upload/v1721234554/aux/voz_xxcaqy.png"

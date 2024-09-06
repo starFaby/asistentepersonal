@@ -9,7 +9,7 @@ Categorias
     {% if asuntoLegal.count() >= 1: %}
     <div class="row">
         {% for item in asuntoLegal %}
-        <div class="col-md-3">
+        <div class="col-md-3  d-flex justify-content-center">
             <a href="{{ url_for('crc.onGetClientControllerCasoListView', id=item.pfsapalid) }}" class="">
                 <div class="card imghover" style="width: 18rem; margin: 5px;">
                     <img style="width: 100%; height:100px ;" class="card-img-top" src="{{item.pfsapalimage}}"

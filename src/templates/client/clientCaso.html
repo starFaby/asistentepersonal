@@ -7,7 +7,7 @@ Caso
 <div class="container">
     <div class="well text-center display-3 m-3">Caso</div>
     {% if casoList.count() >= 1: %}
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         {% for item in casoList %}
         <div class="col-md-3">
             <a href="{{ url_for('crp.onGetClientControllerProcesoListView', id=item.pfsapcasoid) }}" class="">
