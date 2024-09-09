@@ -7,7 +7,7 @@ class ClientControllerModalProcesoVoz:
             modProcVoz = ClientServiceModalProcesoVoz.ongetClientServiceModalProcesoVoz(id)
             for item in modProcVoz:
                 print(item.pfsaprcsid)
-            procesoList = []
+            procesoList = pd.Series()
             context = {
                     'verModal' : True,
                     'procesoList' : procesoList,

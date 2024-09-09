@@ -5,7 +5,7 @@ class ClientServiceProceso:
     @classmethod
     def ongetClientServiceProceso(self, id):
         try:
-            procesoList = Proceso.query.filter(Proceso.pfsaprcsestado == 1).filter(Proceso.pfsapcasoid == id)
+            procesoList = pd.Series(Proceso.query.filter(Proceso.pfsaprcsestado == 1).filter(Proceso.pfsapcasoid == id))
             return procesoList
         except SQLAlchemyError as e:
             return render('errors/error500.html', e)
