@@ -80,9 +80,37 @@ class UserSchema(ma.Schema):
 userSchema = UserSchema()
 usersSchema = UserSchema(many=True)
 
+#-----------------------------------------------------------
+#--------------------USER - COMENTARIO-------------------------------
+#----------------------------------------------------------
+class Usercomentario(db.Model):
+    __tablename__='pfsapusercomentario'
+
+    pfsapucid = db.Column(db.Integer, primary_key=True)
+    pfsapucomentario = db.Column(db.String(150), nullable=False)
+    pfsapucemail = db.Column(db.String(120), nullable=False)
+    pfsapucestado = db.Column(db.String(1), nullable=True)
+    pfsapucreatedat = db.Column(db.String(11), nullable=True) 
+
+    pfsusersid = db.Column(db.Integer, db.ForeignKey('pfsusers.pfsusersid',ondelete='CASCADE'), nullable=False)
+    pfsusers = db.relationship('User',backref=db.backref('pfsapusercomentario',lazy=True))
+
+    def __init__(self, pfsapucomentario,pfsapucemail, pfsapucestado,pfsapucreatedat, pfsusersid):
+        self.pfsapucomentario = pfsapucomentario
+        self.pfsapucemail = pfsapucemail
+        self.pfsapucestado = pfsapucestado
+        self.pfsapucreatedat = pfsapucreatedat
+        self.pfsusersid = pfsusersid
+
+class UsercomentarioSchema(ma.Schema):
+    class Meta:
+        fields = ('pfsapucid', 'pfsapucomentario','pfsapucemail', 'pfsapucestado', 'pfsapucreatedat' , 'pfsusersid')
+
+usercomentarioSchema = UsercomentarioSchema()
+usercomentarioSchema = UsercomentarioSchema(many=True)
 
 #-----------------------------------------------------------
-#--------------------USERCASO-------------------------------
+#--------------------USER-PROCESO-------------------------------
 #----------------------------------------------------------
 
 class Userproceso(db.Model):

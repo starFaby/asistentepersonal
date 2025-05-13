@@ -10,6 +10,16 @@ $(document).ready(function () {
     auxNavbarDesplazamiento.nabDesplazamiento()
     auxNavbarDesplazamiento.menuDesplazamiento()
 
-    /** show alert */
-    
+    /** mensaje de comentario */
+    var btnComent = document.getElementById("btnComent");
+    var count = 1;
+    btnComent.addEventListener("click", function () {
+        var comentario = document.getElementById("comentario");
+        var aux = count++
+        if (aux % 2 != 0) {
+            comentario.style.display = 'none'
+        } else {
+            comentario.style.display = 'block'
+        }
+    });
 })

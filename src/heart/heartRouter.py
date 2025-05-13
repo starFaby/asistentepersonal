@@ -37,6 +37,8 @@ from src.client.router.clientRouterAsuntoLegal import cral
 from src.client.router.clientRouterCaso import crc
 from src.client.router.clientRouterProceso import crp
 from src.client.router.clientRouterModalProcesoVoz import crmpv
+from src.client.router.clientRouterAuspicio import cra
+from src.client.router.clientRouterComentario import crcmt
 
 
 

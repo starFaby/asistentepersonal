@@ -1,0 +1,13 @@
+.containerComentario{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px;
+    background: linear-gradient(to bottom, #8b8b8b 0%, #6a6a6a 49%, #5e5e5e 51%, #717171 100%);
+}
+#comentario{
+    margin: 5px;
+}
+.btnComentario{
+    background: #76323F;
+}

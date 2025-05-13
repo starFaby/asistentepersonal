@@ -44,6 +44,9 @@ from src.client.controller.clientControllerAsuntoLegal import ClientControllerAs
 from src.client.controller.clientControllerCaso import ClientControllerCaso
 from src.client.controller.clientControllerProceso import ClientControllerProceso
 from src.client.controller.clientControllerModalProcesoVoz import ClientControllerModalProcesoVoz
+from src.client.controller.clientControllerAuspicio import ClientControllerAuspicio
+from src.client.controller.clientControllerComentario import ClientControllerComentario
+
 
 #----------
 #--UTIL--

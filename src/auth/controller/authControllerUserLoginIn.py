@@ -30,3 +30,4 @@ class AuthControllerUserLoginIn:
             error = str(e.__dict__['orig'])
             print(error)
             return render('errors/error500.html')
+        

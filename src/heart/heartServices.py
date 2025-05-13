@@ -30,6 +30,7 @@ from src.client.service.clientServiceAsuntoLegal import ClientServiceAsuntoLegal
 from src.client.service.clientServiceCaso import ClientServiceCaso
 from src.client.service.clientServiceProceso import ClientServiceProceso
 from src.client.service.clientServiceModalProcesoVoz import ClientServiceModalProcesoVoz
+from src.client.service.clientServiceComentario import ClientServiceComentario
 
 
 

@@ -36,5 +36,7 @@ def apprun():
     app.register_blueprint(crc)
     app.register_blueprint(crp)
     app.register_blueprint(crmpv)
+    app.register_blueprint(cra)
+    app.register_blueprint(crcmt)
 
     return app
