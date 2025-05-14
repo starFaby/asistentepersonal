@@ -34,7 +34,7 @@ class AdminControllerComentario:
                     flash('Elimando Exitosamente', category='success')
                     return redirect(url_for('arcmt.onGetAdminControllerComentarioListView'))
                 else:
-                    flash('Error al Eliminar', category='info')
+                    flash('Error al Eliminar', category='error')
                     return redirect(url_for('arcmt.onGetAdminControllerComentarioListView'))
             else:
                 return render("auth/loginin.html")
