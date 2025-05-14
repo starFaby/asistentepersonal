@@ -68,9 +68,7 @@ class AdminControllerCaso:
         
     def onGetAdminControllerModalCasoUpdateView(id):
         dataCaso = AdminServiceCaso.onGetAdminServiceDataCasoOne(id)
-        print('dataCaso')
-        print(dataCaso.pfsapcasonombre)
-        print('dataCaso')
+
         casoList = []
         context = {
             'adminFormsWtfCaso': AdminFormsWtfCaso(),

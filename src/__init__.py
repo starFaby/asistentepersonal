@@ -26,6 +26,7 @@ def apprun():
     app.register_blueprint(aral)
     app.register_blueprint(arc)
     app.register_blueprint(arp)
+    app.register_blueprint(arcmt)
     #----------Auth----------
     app.register_blueprint(ardbm)
     app.register_blueprint(arulgn)

@@ -17,9 +17,9 @@ $(document).ready(function () {
         var comentario = document.getElementById("comentario");
         var aux = count++
         if (aux % 2 != 0) {
-            comentario.style.display = 'none'
-        } else {
             comentario.style.display = 'block'
+        } else {
+            comentario.style.display = 'none'
         }
     });
 })

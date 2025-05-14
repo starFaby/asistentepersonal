@@ -36,6 +36,7 @@ from src.admin.controller.adminControllerUsers import AdminControllerUser
 from src.admin.controller.adminControllerAsuntosLegales import AdminControllerAsuntosLegales
 from src.admin.controller.adminControllerCaso import AdminControllerCaso
 from src.admin.controller.adminControllerProceso import AdminControllerProceso
+from src.admin.controller.adminControllerComentario import AdminControllerComentario
 
 #------------------
 # CONTROLLER CLIENT 

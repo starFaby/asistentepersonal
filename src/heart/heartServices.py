@@ -19,6 +19,7 @@ from src.admin.service.adminServiceUser import AdminServiceUser
 from src.admin.service.adminServiceAsuntosLegales import AdminServiceAsuntosLegales
 from src.admin.service.adminServiceCaso import AdminServiceCaso
 from src.admin.service.adminServiceProceso import AdminServiceProceso
+from src.admin.service.adminServiceComentario import AdminServiceComentario
 
 #--------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------

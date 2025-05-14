@@ -7,7 +7,9 @@
 }
 #comentario{
     margin: 5px;
+    display: none;
 }
 .btnComentario{
-    background: #76323F;
+    margin: 3px;
+    background-color: #76323F;
 }

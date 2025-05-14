@@ -29,6 +29,7 @@ from src.admin.router.adminRouterAsuntosLegales import aral
 from src.admin.router.adminRouterCaso import arc
 from src.admin.router.adminRouterProceso import arp
 from src.admin.router.adminRouterProceso import arp
+from src.admin.router.adminRouterComentario import arcmt
 
 #--------------------------
 #---ADMIN CLIENT------
