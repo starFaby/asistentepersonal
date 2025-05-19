@@ -1,5 +1,8 @@
 import Index from "./index.js"
 import NavbarDesplazamiento from "./navbar.js"
+import Comentario from "./btnComentario.js"
+/** eventos */
+import "./caracteresDispon.js"
 
 $(document).ready(function () {
     const aux = new Index()
@@ -10,16 +13,8 @@ $(document).ready(function () {
     auxNavbarDesplazamiento.nabDesplazamiento()
     auxNavbarDesplazamiento.menuDesplazamiento()
 
-    /** mensaje de comentario */
-    var btnComent = document.getElementById("btnComent");
-    var count = 1;
-    btnComent.addEventListener("click", function () {
-        var comentario = document.getElementById("comentario");
-        var aux = count++
-        if (aux % 2 != 0) {
-            comentario.style.display = 'block'
-        } else {
-            comentario.style.display = 'none'
-        }
-    });
+    /** Comentario */
+    const auxComenatrio = new Comentario()
+    auxComenatrio.viewComentario()
+    
 })

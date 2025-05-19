@@ -1,6 +1,6 @@
 class Index{
     textVoz(){
-        console.log("Hola star faby estoy en el index")
+        console.log("Asistente...")
     }
 }
 
