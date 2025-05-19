@@ -20,7 +20,7 @@ class AdminServiceComentario:
         try:
             page = page
             pages = 10
-            comentarioList = Usercomentario.query.filter(Usercomentario.pfsapucomentario.like(search)).paginate(per_page=pages,error_out=False)
+            comentarioList = Usercomentario.query.filter(Usercomentario.pfsapucomentario.like(search)).filter(Usercomentario.pfsapucestado == 1).paginate(per_page=pages,error_out=False)
             return comentarioList
         except SQLAlchemyError as e:
             return render('errors/error500.html')
